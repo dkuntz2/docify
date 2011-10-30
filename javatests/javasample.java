@@ -10,8 +10,13 @@ public class javasample {
 		Standard factorial method using recursion, returns 1 if x is less than
 		or equal to 1, otherwise it returns `factorial(x-1)`.
 
-		@param 	x	integer to get the factorial of.
-		@return x!
+		@parameters = [
+			x : integer to the the factorial of.
+		]
+
+		@returns = [
+			defalut : x!
+		]
 	*/
 	public static int factorial(int x) {
 		if (x <= 1)
@@ -25,17 +30,24 @@ public class javasample {
 
 		Currently it doesn't do anything, as the whole method is
 
-			public static String jumble(String toJumble) {
+			public static String jumble(String toJumble, int numTimes) {
 				return toJumble;
 			}
 
 		However in the possible future, it might do something, something
 		really cool like. YEAH.
 
-		@param 	toJumble	the string you want to jumble
-		@return toJumble, jumbled up all fancy like.
+		@parameters	= [
+			toJumble: The word to jumble up
+			numTimes: The number of times to jumble the word
+		]
+
+		@returns	= [
+			Case0 	: Nothing, there is no case other than the standard one
+			default 	: the toJumble String passed in the method header
+		]
 	*/
-	public static String jumble(String toJumble) {
+	public static String jumble(String toJumble, int numTimes) {
 		return toJumble;
 	}
 }
