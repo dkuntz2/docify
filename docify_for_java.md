@@ -38,17 +38,17 @@ The following is a basic docify block for a recursive factorial method:
 
 Docify would generate the following based off of that block:
 
-## factorial( int x )
+### factorial( int x )
 
 Get a factorial *recursively*
 
 Standard factorial method using recursion, returns 1 if x is less than or equal to 1, 
 otherwise it returns `factorial(x-1)`.
 
-### Parameters
+#### Parameters
 
 - **int x** - integer to get the factorial of.
 
-### Returns
+#### Returns
 
 x!
