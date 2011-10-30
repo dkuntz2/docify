@@ -19,36 +19,65 @@ for separators. Additionally, docify uses
 The following is a basic docify block for a recursive factorial method:
 
 	/**
-		Get a factorial *recursively*.
+		Jumble up a string
 
-		Standard factorial method using recursion, returns
-		1 if x is less than or equal to 1, otherwise it returns
-		`factorial(x-1)`.
+		Currently it doesn't do anything, as the whole method is
 
-		@param 	x	integer to get the factorial of.
-		@return	x!
+			public static String jumble(String toJumble, int numTimes) {
+				return toJumble;
+			}
 
+		However in the possible future, it might do something, something
+		really cool like. YEAH.
+
+		@parameters	= [
+			toJumble: The word to jumble up
+			numTimes: The number of times to jumble the word
+		]
+
+		@returns	= [
+			Case0 	: Nothing, there is no case other than the standard one
+			default 	: the toJumble String passed in the method header
+		]
 	*/
-	public int factorial(int x) {
-		if (x <= 1)
-			return 1;
-		else
-			return foo(x - 1);
+	public static String jumble(String toJumble, int numTimes) {
+		return toJumble;
 	}
 
 Docify would generate the following based off of that block:
 
-### factorial( int x )
+### jumble( String toJumble, int numTimes )
 
-Get a factorial *recursively*
+Jumble up a string
 
-Standard factorial method using recursion, returns 1 if x is less than or equal to 1, 
-otherwise it returns `factorial(x-1)`.
+currently it doesn't do anything, as the whole method is
+	
+	public static String jumble(String toJumble, int numTimes) {
+		return toJumble;
+	}
+
+However in the possible future, it might do something, something really cool like. YEAH
+
 
 #### Parameters
 
-- **int x** - integer to get the factorial of.
+- **String toJumble** - The word to jumble up
+
+- **int numTimes** - The number of times to jumble up the word
 
 #### Returns
 
-x!
+**Default**:
+
+the toJumble String passed in the method header
+
+**Case0**:
+
+Nothing, there is no case other than the standard one
+
+
+
+## Notes
+
+Docify is not yet complete, and as such, it does not create documentation in that format
+yet. This document is only meant to show how docify will work in the future.
