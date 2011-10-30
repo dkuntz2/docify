@@ -74,8 +74,7 @@ for f in files:
 		
 		paramStr = para.group();
 		paramStart = re.search('@parameters\s=\s\[', paramStr)
-		paramStr = paramStr[paramStart.span()[1]:len(paramStr)]
-		
+		paramStr = paramStr[paramStart.span()[1]:len(paramStr)].replace("\n" + ("\t" * (numTabs + 1)), "\n")
 
 		# grab the @return block area
 		retur = []
@@ -83,7 +82,7 @@ for f in files:
 
 		retStr = ret.group()
 		retStart = re.search('@returns\s=\s\[', retStr)
-		retStr = retStr[retStart.span()[1]:len(retStr)]
+		retStr = retStr[retStart.span()[1]:len(retStr)].replace("\n" + ("\t" * (numTabs + 1)), "\n")
 
 
 		# set b to everything before the parameters

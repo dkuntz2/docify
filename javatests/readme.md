@@ -27,3 +27,7 @@ This directory is used to hold all of the java tests.
 	create the markdown document in same directory as the java file being docified, now
 	it's created in the working directory (calling `python javatests/javadocify.py javatests/*.java` creates the markdown files in the root, not inside of javatests,
 	like how javadoc does).
+
+5.	Okay, lots of updates between previous notes, BUT, the system now has fun time with 
+	the docblock, and displays most of the things you want to see, in a somewhat useful
+	format. I still need to get the method header, but that shouldn't be that hard...

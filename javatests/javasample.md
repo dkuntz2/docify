@@ -6,12 +6,12 @@ or equal to 1, otherwise it returns `factorial(x-1)`.
 
 #### Parameters
 
-			x : integer to the the factorial of.
+x : integer to the the factorial of.
 		
 
 #### Returns
 
-			defalut : x!
+defalut : x!
 		
 ========
 
@@ -28,13 +28,13 @@ really cool like. YEAH.
 
 #### Parameters
 
-			toJumble: The word to jumble up
-			numTimes: The number of times to jumble the word
+toJumble: The word to jumble up
+numTimes: The number of times to jumble the word
 		
 
 #### Returns
 
-			Case0 	: Nothing, there is no case other than the standard one
-			default 	: the toJumble String passed in the method header
+Case0 	: Nothing, there is no case other than the standard one
+default 	: the toJumble String passed in the method header
 		
 ========
