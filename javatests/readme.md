@@ -17,3 +17,13 @@ This directory is used to hold all of the java tests.
 	replace the beginning tabs (provided they aren't extra indentations for a code
 	block, those *should* remain intact). Markdown still not parsed. Also, it only prints
 	the first docblock section... Need to fix that.
+
+3.	Okay, now it accepts multiple docblocks, which is fun. They're currently delineated 
+	with `========`, just for my own convenience. But hey, that's cool, next up: getting
+	the @param and @return working, because that will be really cool (also getting the
+	method name, that'd be fun too).
+
+4.	Instead of figuring out the @ stuff, I fixed the abs path problem. The system used to
+	create the markdown document in same directory as the java file being docified, now
+	it's created in the working directory (calling `python javatests/javadocify.py javatests/*.java` creates the markdown files in the root, not inside of javatests,
+	like how javadoc does).

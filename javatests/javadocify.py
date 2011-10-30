@@ -37,28 +37,35 @@ for f in files:
 	for e in t:
 		tmp = e.split("*/");
 		blocks.append(tmp[0])
+		
 	
 	# determine initial tab push, will be basis for all following ones...
-	numTabs = 0;
-
-	tmpInt = blocks[0].index("\n")
-
-	tmp = blocks[0][0:int(tmpInt)]
-
-	moreTabs = True
-
-	while moreTabs:
-		try :
-			if tmp.index("\t") == 0:
-				numTabs += 1
-				tmp = tmp[1:len(tmp)]
-		except ValueError:
-			moreTabs = False
 		
 	print "out of tabs"
 
-	writer = open(f.replace(".java", ".md"), "w")
+	pathList = f.split("/")
+	fname = pathList[len(pathList) - 1]
+
+
+	writer = open(fname.replace(".java", ".md"), "w")
 	for b in blocks:
+		numTabs = 0;
+
+		tmpInt = b.index("\n")
+
+		tmp = b[0:int(tmpInt)]
+
+		moreTabs = True
+
+		while moreTabs:
+			try :
+				if tmp.index("\t") == 0:
+					numTabs += 1
+					tmp = tmp[1:len(tmp)]
+			except ValueError:
+				moreTabs = False
+		
 		b = "\n" + b
 		writer.write(b.replace("\n" + ("\t" * numTabs), "\n"))
+		writer.write("\n========\n")
 	
