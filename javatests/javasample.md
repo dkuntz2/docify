@@ -1,3 +1,4 @@
+# public static factorial
 
 Get a factorial *recursively*
 
@@ -18,6 +19,7 @@ x!
 		
 
 -----
+# public jumble
 
 Jumble up a string
 

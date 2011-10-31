@@ -6,7 +6,6 @@ import re
 #files = []
 inArr = argv
 
-#print "File: ", files[1]
 
 files = []
 
@@ -14,22 +13,16 @@ for f in inArr:
 	s = f.split(".")
 	if len(s) > 1:
 		if s[len(s) - 1] == "java" :
-			#print "File: " + f
 			files.append(f);
 
-print "\n==========\n"
 
 for f in files:
-	print "File: " + f
-
 	file = open(f);
-	print file;
-
+	
 	text = "";
 	for line in file :
 		text = text + line
 
-	#print text
 
 	t = text.split("/**\n");
 	t.pop(0)
@@ -39,12 +32,7 @@ for f in files:
 		tmp = e.split("*/");
 		tmpStuffs = tmp[1].split("{")
 		blocks.append(tmp[0] + "\n\n" + tmpStuffs[0])
-		
 	
-	# determine initial tab push, will be basis for all following ones...
-		
-	print "out of tabs"
-
 	pathList = f.split("/")
 	fname = pathList[len(pathList) - 1]
 
@@ -128,7 +116,12 @@ for f in files:
 			numCharsBefore += 7
 		retType = methodHeader[numCharsBefore:len(methodHeader)].split(" ")[0]
 		
+		# methodName
+		numCharsBefore += len(retType) + 1
+		methodName = methodHeader[numCharsBefore:len(methodHeader)].split("(")[0]
 
+		# write method name and other fun stuff
+		writer.write("# " + pubpriv + (" static " if static else " ") + methodName + "\n")
 
 		# write out the docify block
 		writer.write(e.replace("\n" + ("\t" * numTabs), "\n"))
