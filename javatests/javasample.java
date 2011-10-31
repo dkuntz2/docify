@@ -49,7 +49,7 @@ public class javasample {
 			Case0 	: Nothing, there is no case other than the standard one
 		]
 	*/
-	public static String jumble(String toJumble, int numTimes) {
+	public String jumble(String toJumble, int numTimes) {
 		return toJumble;
 	}
 }

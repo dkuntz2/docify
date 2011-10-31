@@ -37,7 +37,8 @@ for f in files:
 	blocks = []
 	for e in t:
 		tmp = e.split("*/");
-		blocks.append(tmp[0])
+		tmpStuffs = tmp[1].split("{")
+		blocks.append(tmp[0] + "\n\n" + tmpStuffs[0])
 		
 	
 	# determine initial tab push, will be basis for all following ones...
@@ -107,18 +108,42 @@ for f in files:
 		# remove returns block from b
 		e = e[0:ret.span()[0]]
 
+		# Get fun method stuff
+		methodHeader = b.split("\n\n")[len(b.split("\n\n")) - 1]
+		methodHeader = methodHeader.replace("\n" + ("\t" * (numTabs - 1)), "")
+
+		#public or private
+		pubpriv = ("public" if methodHeader.index("public") == 0 else "private")
+		
+		# is it static
+		static = False
+		try :
+			static = True if methodHeader.index("static") > -1 else False
+		except ValueError :
+			static = False
+
+		# return type
+		numCharsBefore = len(pubpriv) + 1
+		if static :
+			numCharsBefore += 7
+		retType = methodHeader[numCharsBefore:len(methodHeader)].split(" ")[0]
+		
+
+
 		# write out the docify block
 		writer.write(e.replace("\n" + ("\t" * numTabs), "\n"))
 
 		# parameters
 		writer.write("## Parameters\n")
 		for k in param:
-			writer.write("\n### " + k + "\n\n" + param[k] + "\n")
+			writer.write("\n### " + k + "\n\n" + param[k][1:len(param[k])] + "\n")
 
 		# returns
-		writer.write("\n## Returns\n")
+		writer.write("\n## Returns - " + retType + "\n")
 		for k in retur:
-			writer.write("\n### " + k + "\n\n" + retur[k] + "\n")
+			writer.write("### " + k + "\n\n" + retur[k][1:len(retur[k])] + "\n")
+		
+		#writer.write(b.split("\n\n")[len(b.split("\n\n")) - 1])
 		# separater
 		if blocks.index(b) < len(blocks) - 1:
 			writer.write("\n-----\n")

@@ -8,14 +8,13 @@ or equal to 1, otherwise it returns `factorial(x-1)`.
 
 ### x 
 
- integer to the the factorial of.
+integer to the the factorial of.
 		
 
-## Returns
-
+## Returns - int
 ### defalut 
 
- x!
+x!
 		
 
 -----
@@ -35,20 +34,18 @@ really cool like. YEAH.
 
 ### toJumble
 
- The word to jumble up
+The word to jumble up
 
 ### numTimes
 
- The number of times to jumble the word
+The number of times to jumble the word
 		
 
-## Returns
-
+## Returns - String
 ### Case0 	
 
- Nothing, there is no case other than the standard one
+Nothing, there is no case other than the standard one
 		
-
 ### default 	
 
- the toJumble String passed in the method header
+the toJumble String passed in the method header
