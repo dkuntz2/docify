@@ -31,3 +31,5 @@ This directory is used to hold all of the java tests.
 5.	Okay, lots of updates between previous notes, BUT, the system now has fun time with 
 	the docblock, and displays most of the things you want to see, in a somewhat useful
 	format. I still need to get the method header, but that shouldn't be that hard...
+
+6.	Only prints the separator if it's not the last docblock section.
