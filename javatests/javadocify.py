@@ -93,41 +93,44 @@ for f in files:
 		# grab the $parameters block area
 		param = {}
 		para = re.search('@parameters\s=\s\[[^\]]*', e)
-		
-		paramStr = para.group();
-		paramStart = re.search('@parameters\s=\s\[', paramStr)
-		paramStr = paramStr[paramStart.span()[1]:len(paramStr)].replace("\n" + ("\t" * (numTabs + 1)), "\n")
+		if para != None :
+			paramStr = para.group();
+			paramStart = re.search('@parameters\s=\s\[', paramStr)
+			paramStr = paramStr[paramStart.span()[1]:len(paramStr)].replace("\n" + ("\t" * (numTabs + 1)), "\n")
 
-		# place individual parameters in dict param
-		tmpPara = paramStr.split("\n\n")
+			# place individual parameters in dict param
+			tmpPara = paramStr.split("\n\n")
 
-		for t in tmpPara :
-			varName = re.search('[^:]*', t)
-			varVal = t[varName.span()[1]:len(t)]
-			varName = varName.group().replace(" ", "").replace("\n", "")
-			varVal = re.search('\s[^:]*', varVal).group()
-			param[varName + " - " + paramtype[varName]] = varVal
+			for t in tmpPara :
+				varName = re.search('[^:]*', t)
+				varVal = t[varName.span()[1]:len(t)]
+				varName = varName.group().replace(" ", "").replace("\n", "")
+				varVal = re.search('\s[^:]*', varVal).group()
+				param[varName + " - " + paramtype[varName]] = varVal
 		# grab the @return block area
 		retur = {}
 		ret = re.search('@returns\s=\s\[[^\]]*', e)
+		if ret != None :
+			retStr = ret.group()
+			retStart = re.search('@returns\s=\s\[', retStr)
+			retStr = retStr[retStart.span()[1]:len(retStr)].replace("\n" + ("\t" * (numTabs + 1)), "\n")
 
-		retStr = ret.group()
-		retStart = re.search('@returns\s=\s\[', retStr)
-		retStr = retStr[retStart.span()[1]:len(retStr)].replace("\n" + ("\t" * (numTabs + 1)), "\n")
+			tmpRet = retStr.split("\n\n")
 
-		tmpRet = retStr.split("\n\n")
+			for r in tmpRet:
+				caseName = re.search('[^:]*', r)
+				caseVal = r[caseName.span()[1]:len(r)]
+				caseVal = re.search('\s[^:]*', caseVal).group()
+				retur[caseName.group().replace("\n", "")] = caseVal
 
-		for r in tmpRet:
-			caseName = re.search('[^:]*', r)
-			caseVal = r[caseName.span()[1]:len(r)]
-			caseVal = re.search('\s[^:]*', caseVal).group()
-			retur[caseName.group().replace("\n", "")] = caseVal
+		
+		if ret != None :
+			# remove returns block from b
+			e = e[0:ret.span()[0]]
 
-
-		# set b to everything before the parameters
-		e = e[0:para.span()[0]]
-		# remove returns block from b
-		e = e[0:ret.span()[0]]
+		if para != None:
+			# set b to everything before the parameters
+			e = e[0:para.span()[0]]
 
 
 		# write method name and other fun stuff
