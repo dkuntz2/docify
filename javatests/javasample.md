@@ -7,7 +7,7 @@ or equal to 1, otherwise it returns `factorial(x-1)`.
 
 ## Parameters
 
-### x 
+### x - int
 
 integer to the the factorial of.
 		
@@ -34,11 +34,11 @@ really cool like. YEAH.
 
 ## Parameters
 
-### toJumble
+### toJumble - String
 
 The word to jumble up
 
-### numTimes
+### numTimes - int
 
 The number of times to jumble the word
 		
