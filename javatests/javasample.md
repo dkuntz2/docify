@@ -1,4 +1,4 @@
-# public static factorial
+# public static factorial ( int x )
 
 Get a factorial *recursively*
 
@@ -19,7 +19,7 @@ x!
 		
 -----
 
-# public jumble
+# public jumble ( String toJumble, int numTimes )
 
 Jumble up a string
 

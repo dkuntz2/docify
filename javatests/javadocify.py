@@ -131,8 +131,15 @@ for f in files:
 
 
 		# write method name and other fun stuff
-		writer.write("# " + pubpriv + (" static " if static else " ") + methodName + "\n")
+		writer.write("# " + pubpriv + (" static " if static else " ") + methodName + " ( ")
+		i = 0
+		for k in paramtype:
+			i += 1
+			writer.write(paramtype[k] + " " + k)
+			if (i < len(paramtype)):
+				writer.write(", ")
 
+		writer.write(" )\n")
 		# write out the docify block
 		writer.write(e.replace("\n" + ("\t" * numTabs), "\n"))
 
