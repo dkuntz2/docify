@@ -13,7 +13,7 @@ integer to the the factorial of.
 		
 
 ## Returns - int
-### defalut 
+### default 
 
 x!
 		

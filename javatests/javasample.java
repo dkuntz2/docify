@@ -15,7 +15,7 @@ public class javasample {
 		]
 
 		@returns = [
-			defalut : x!
+			default : x!
 		]
 	*/
 	public static int factorial(int x) {
