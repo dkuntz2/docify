@@ -80,7 +80,7 @@ for f in files:
 		tmpPara = paramStr.split("\n\n")
 
 		for t in tmpPara :
-			varName = re.search('[^\:]*', t)
+			varName = re.search('[^:]*', t)
 			varVal = t[varName.span()[1]:len(t)]
 			varVal = re.search('\s[^:]*', varVal).group()
 			param[varName.group().replace("\n", "")] = varVal
@@ -92,6 +92,14 @@ for f in files:
 		retStr = ret.group()
 		retStart = re.search('@returns\s=\s\[', retStr)
 		retStr = retStr[retStart.span()[1]:len(retStr)].replace("\n" + ("\t" * (numTabs + 1)), "\n")
+
+		tmpRet = retStr.split("\n\n")
+
+		for r in tmpRet:
+			caseName = re.search('[^:]*', r)
+			caseVal = r[caseName.span()[1]:len(r)]
+			caseVal = re.search('\s[^:]*', caseVal).group()
+			retur[caseName.group().replace("\n", "")] = caseVal
 
 
 		# set b to everything before the parameters
@@ -109,8 +117,8 @@ for f in files:
 
 		# returns
 		writer.write("\n## Returns\n")
-		writer.write(retStr)
-
+		for k in retur:
+			writer.write("\n### " + k + "\n\n" + retur[k] + "\n")
 		# separater
 		if blocks.index(b) < len(blocks) - 1:
 			writer.write("\n-----\n")

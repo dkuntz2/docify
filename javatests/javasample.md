@@ -13,8 +13,11 @@ or equal to 1, otherwise it returns `factorial(x-1)`.
 
 ## Returns
 
-defalut : x!
+### defalut 
+
+ x!
 		
+
 -----
 
 Jumble up a string
@@ -41,7 +44,11 @@ really cool like. YEAH.
 
 ## Returns
 
-Case0 	: Nothing, there is no case other than the standard one
+### Case0 	
 
-default 	: the toJumble String passed in the method header
+ Nothing, there is no case other than the standard one
 		
+
+### default 	
+
+ the toJumble String passed in the method header

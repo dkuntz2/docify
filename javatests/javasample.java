@@ -44,9 +44,9 @@ public class javasample {
 		]
 
 		@returns	= [
-			Case0 	: Nothing, there is no case other than the standard one
-			
 			default 	: the toJumble String passed in the method header
+			
+			Case0 	: Nothing, there is no case other than the standard one
 		]
 	*/
 	public static String jumble(String toJumble, int numTimes) {
