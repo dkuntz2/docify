@@ -139,5 +139,5 @@ for f in files:
 		#writer.write(b.split("\n\n")[len(b.split("\n\n")) - 1])
 		# separater
 		if blocks.index(b) < len(blocks) - 1:
-			writer.write("\n-----\n")
+			writer.write("-----\n\n")
 	

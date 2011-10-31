@@ -17,8 +17,8 @@ integer to the the factorial of.
 
 x!
 		
-
 -----
+
 # public jumble
 
 Jumble up a string
