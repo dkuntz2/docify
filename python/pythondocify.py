@@ -107,10 +107,8 @@ for f in files:
 			retStart = re.search('@returns\s=\s\[', retStr)
 			retStr = retStr[retStart.span()[1]:len(retStr)].replace("\n" + ("\t" * (numTabs + 1)), "\n")
 
-			print retStr
 
 			tmpRet = retStr.split("\n\n")
-			print tmpRet
 
 			for r in tmpRet:
 				caseName = re.search('[^:]*', r)
