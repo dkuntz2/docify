@@ -1,3 +1,13 @@
+# Modular Docify
+
+This is the Modular branch of Docify, where we're trying to make docify more modular 
+in nature, so that people who want to can hop in and grab exactly what they need to
+make their own implementation of Docify, or even just use some code that's already
+been written before instead of writing their own.
+
+Right now this is really developmenty, and you probably shouldn't use it unless you're
+looking at helping make it less developmenty...
+
 # Docify
 
 Docify is a (currently hypothetical) alternative documentation markup reader/creator.
