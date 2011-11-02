@@ -22,7 +22,7 @@ public class javasample {
 		if (x <= 1)
 			return 1;
 		else
-			return factorial(x-1);
+			return x * factorial(x-1);
 	}
 
 	/**
