@@ -18,3 +18,28 @@ def factorial(x=5):
 	else :
 		return x * factorial(x - 1)
 
+'''/**
+	Jumble up a string
+
+	Currently it doesn't do anything, as the whole method is
+
+		def jumble(toJumble="hi", numTimes=5):
+			return toJumble
+
+	However in the possible future, it might do something, something
+	really cool like. YEAH.
+
+	@parameters	= [
+		toJumble: The word to jumble up
+
+		numTimes: The number of times to jumble the word
+	]
+
+	@returns	= [
+		default 	: the toJumble String passed in the method header
+		
+		Case0 	: Nothing, there is no case other than the standard one
+	]
+*/'''
+def jumble(toJumble="hi", numTimes=5):
+	return toJumble

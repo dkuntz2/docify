@@ -64,13 +64,13 @@ for f in files:
 		# methodName
 		numCharsBefore = 4;
 		methodName = methodHeader[numCharsBefore:len(methodHeader)].split("(")[0]
-		print methodName
-		print methodHeader
 			
 		e = "\n" + b
 
 		# grab the $parameters block area
-		param = {}
+		paramDes = {}
+		param = []
+		initparam = []
 		para = re.search('@parameters\s=\s\[[^\]]*', e)
 		if para != None :
 			paramStr = para.group();
@@ -80,12 +80,25 @@ for f in files:
 			# place individual parameters in dict param
 			tmpPara = paramStr.split("\n\n")
 
+			paramreg = re.search('([a-zA-Z0-9=\",\ ]+)', methodHeader)
+			paramreg2 = re.search('([a-zA-Z0-9=\",\ ]+)', methodHeader.replace(paramreg.group(), ""))
+			initvals = paramreg2.group().replace(", ", ",").split(",")
+			for iv in initvals :
+				tmp = iv.split("=") 
+				param.append(tmp[0])
+				if len(tmp) >= 2:
+					initparam.append(tmp[1])
+				else :
+					initparam.append("")
+				
 			for t in tmpPara :
 				varName = re.search('[^:]*', t)
 				varVal = t[varName.span()[1]:len(t)]
 				varName = varName.group().replace(" ", "").replace("\n", "")
 				varVal = re.search('\s[^:]*', varVal).group()
-				param[varName] = varVal
+				
+				paramDes[varName] = varVal
+				
 		# grab the @return block area
 		retur = {}
 		ret = re.search('@returns\s=\s\[[^\]]*', e)
@@ -94,13 +107,18 @@ for f in files:
 			retStart = re.search('@returns\s=\s\[', retStr)
 			retStr = retStr[retStart.span()[1]:len(retStr)].replace("\n" + ("\t" * (numTabs + 1)), "\n")
 
+			print retStr
+
 			tmpRet = retStr.split("\n\n")
+			print tmpRet
 
 			for r in tmpRet:
 				caseName = re.search('[^:]*', r)
 				caseVal = r[caseName.span()[1]:len(r)]
 				caseVal = re.search('\s[^:]*', caseVal).group()
 				retur[caseName.group().replace("\n", "")] = caseVal
+
+		
 
 		
 		if ret != None :
@@ -114,14 +132,23 @@ for f in files:
 
 		# write method name and other fun stuff
 		writer.write("# " + methodName + " ( ")
+		
+		for i in range(len(param)) :
+			writer.write(param[i] + (" = " + initparam[i] if initparam[i] != "" else "" ))
+			if i < len(param) - 1 :
+				writer.write(" , ")		
+
 		writer.write(" )\n")
 		# write out the docify block
 		writer.write(e.replace("\n" + ("\t" * numTabs), "\n"))
 
 		# parameters
 		writer.write("## Parameters\n")
-		for k in param:
-			writer.write("\n### " + k + "\n\n" + param[k][1:len(param[k])] + "\n")
+		#for k in param:
+		#	writer.write("\n### " + k + "\n\n" + paramDes[k][1:len(paramDes[k])] + "\n")
+
+		for i in range(len(param)) :
+			writer.write("\n### " + param[i] + (" = " + initparam[i] if initparam[i] != "" else "" ) + "\n\n"  + (paramDes[param[i]] + "\n" if param[i] in paramDes else "") )
 
 		# returns
 		writer.write("\n## Returns\n")
