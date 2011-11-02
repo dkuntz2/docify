@@ -55,7 +55,7 @@ list of files that are indeed the right extension.
 # grabDocifyBlock ( file )
 
 Get the docify block, using the default docify block declarations `/**` to start
-and `*/` to stop.
+and `*/` to stop, also assuming that the method starts with `{`.
 
 ## Parameters
 
@@ -67,11 +67,11 @@ and `*/` to stop.
 ## Returns
 ### default
 
-A list of parsed docify blocks.
+A list of unparsed docify blocks.
 	
 -----
 
-# grabDocifyBlock ( file , start , stop )
+# grabDocifyBlock ( file , start , stop , methodStart )
 
 Get the docify block, using custom start and stop declarations.
 
@@ -88,10 +88,44 @@ Get the docify block, using custom start and stop declarations.
 ### stop
 
  The patter for the end of a docify block.
+
+### methodStart
+
+ The character used to start the method, in Java it's `{`,
+in Python it's `
+
+## Returns
+### default
+
+A list of unparsed docify blocks.
+	
+-----
+
+# getParams ( block )
+
+Get a parameter block, formatted as:
+
+	## Parameters
+
+	### param1
+
+	What it does
+
+	...
+
+it should work real nice like.
+
+## Parameters
+
+### block
+
+ The docify block to get the parameters from, including the
+method header (which is kept intat if you ues the `grabDocifyBlock`
+method).
 	
 
 ## Returns
 ### default
 
-A list of parsed docify blocks.
+A string of the parameters parsed from the block
 	
