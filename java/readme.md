@@ -14,9 +14,13 @@ Docify, unlike javadoc does not require a star for each line, just that new line
 for separators. Additionally, docify uses 
 [markdown](http://daringfireball.net/projects/markdown) for styling comments.
 
+You must have each line of a docify block one tab in compared to the starting and 
+ending characters, as seen below. If you keep everything at the same level, docify will
+not work.
+
 --------
 
-The following is a basic docify block for a recursive factorial method:
+The following is a basic docify block for a simple method:
 
 	/**
 		Jumble up a string
@@ -48,36 +52,38 @@ The following is a basic docify block for a recursive factorial method:
 
 Docify would generate the following based off of that block:
 
-### jumble( String toJumble, int numTimes )
+# public jumble ( String toJumble, int numTimes )
 
 Jumble up a string
 
-currently it doesn't do anything, as the whole method is
-	
+Currently it doesn't do anything, as the whole method is
+
 	public static String jumble(String toJumble, int numTimes) {
 		return toJumble;
 	}
 
-However in the possible future, it might do something, something really cool like. YEAH
+However in the possible future, it might do something, something
+really cool like. YEAH.
 
+## Parameters
 
-#### Parameters
+### toJumble - String
 
-- **String toJumble** - The word to jumble up
+The word to jumble up
 
-- **int numTimes** - The number of times to jumble up the word
+### numTimes - int
 
-#### Returns
+The number of times to jumble the word
+		
 
-**Default**:
-
-the toJumble String passed in the method header
-
-**Case0**:
+## Returns - String
+### Case0 	
 
 Nothing, there is no case other than the standard one
+		
+### default 	
 
-
+the toJumble String passed in the method header
 
 ## Notes
 
